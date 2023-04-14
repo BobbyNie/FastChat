@@ -2,12 +2,15 @@ FROM python:3.9-slim
 
 # Set the working directory to /app
 WORKDIR /app
- 
+
+# Install git
+RUN apt-get update && apt-get install -y git
+
 # Install FastChat
-RUN pip3 install fschat
+RUN pip3 install --no-cache-dir fschat
 
 # Install the latest main branch of huggingface/transformers
-RUN pip3 install git+https://github.com/huggingface/transformers
+RUN pip3 install --no-cache-dir git+https://github.com/huggingface/transformers
 
 # Create a non-root user and grant permissions to the /app folder
 RUN useradd -m -u 1001 -r -s /bin/false appuser && chown -R appuser /app
