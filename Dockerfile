@@ -2,13 +2,7 @@ FROM python:3.9-slim
 
 # Set the working directory to /app
 WORKDIR /app
-
-# Copy requirements.txt into the container at /app
-COPY requirements.txt /app/
-
-# Install any needed packages specified in requirements.txt
-RUN pip3 install --trusted-host pypi.python.org -r requirements.txt
-
+ 
 # Install FastChat
 RUN pip3 install fschat
 
